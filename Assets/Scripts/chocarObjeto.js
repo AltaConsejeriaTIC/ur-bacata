@@ -1,23 +1,38 @@
 ﻿	#pragma strict
 
 var Text : TextMesh;
-var Puntos:int;
+var TxtPerdio : TextMesh;
+
+
+protected var Posicion : Transform;
+
+static var PuntosMal:int=0;
 
 function Start () {
-	Puntos = CrearEstructuras.Puntos;
+	audio.Play();
 }
 
 function Update () {
-
+	 
+	Posicion = transform;
 }
-
+//OnMouseDown()
 function OnTriggerEnter2D(otro: Collider2D){
-	print("Valor de puntos: "+Puntos);
+	
 	if(otro.tag == "Cilindro"){
 		print("Me chocaste!!!");
 		Destroy(gameObject);
-		Puntos = Puntos - 1;
-		Text.text = "Puntos: "+Puntos;
+		PuntosMal += 1;
+		Text.text = "Mal: "+PuntosMal;
 	}
-	return true;
+	if(PuntosMal>4){
+		TxtPerdio.text = "Perdio";
+		cargar();
+		//Invoke("cargar",1);
+		//audio.Play();
+	}
+}
+
+function cargar(){
+	Application.LoadLevel("Fin");
 }

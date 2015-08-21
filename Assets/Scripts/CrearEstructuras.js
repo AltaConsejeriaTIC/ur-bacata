@@ -1,7 +1,6 @@
 ﻿//Este Script es utilizado para contruir GameObjects dependiendo del dinero que tengamos
 
-
-public static var Puntos :int = 0; //inicialmente tendremos un dinero de 2000
+var Puntos :int = 0; //inicialmente tendremos un dinero de 2000
 // estas tres Texture2D son los botones para consruir
 var cajaIcono : Texture2D;
 var esferaIcono : Texture2D;
@@ -18,10 +17,14 @@ var angulo : float = 20;
 // para cargar las construcciones
 private var Construcciones;
 private var ConstruccionesCost : int = 0;
+//cargo el nombre de la otra script
+var nombrecap : String = inicial.nombres;
+var TxtJugador : TextMesh;
 
 function Start(){
 	//referencio a mi texto
-	Texto.text = "Puntos: "+Puntos;
+	Texto.text = "Bien: "+Puntos;
+	TxtJugador.text = "Jugador: "+nombrecap;
 }
 /* esta funcion OnGUI permite construir los botones en la camara pricipal.
 	permite crear la interfaz.
@@ -29,21 +32,40 @@ function Start(){
 function OnGUI(){
 	/* CREAMOS LOS BOTONES
 		Rect(X,Y,Ancho, Alto)		GUIContent(Icono, Mensaje en pantalla)
+		A
 	*/
-	if(GUI.Button(Rect(-3.2,3.5,50,50),GUIContent( cajaIcono,"Creo una caja")))
+	if(GUI.Button(Rect(-4.15,3.17,35,50),GUIContent( cajaIcono,"Creo una caja")))
 	{
 		Construcciones = GameObject.Find("Cube");//instanciamos el nombre del GameObject
 		ConstruccionesCost = costoCubo;
 	}
-	// Boton para la esfera
-	if(GUI.Button(Rect(60,10,50,50),GUIContent( esferaIcono," Creo una esfera")))
+	// Boton para la esfera B
+	if(GUI.Button(Rect(30,3.17,35,50),GUIContent( esferaIcono," Creo una esfera")))
 	{
 		Construcciones = GameObject.Find("Sphere");//instaciamos el Nombre del GameObject
 		ConstruccionesCost = costoEsfera;
 	}
 	
-	// Boton para el cilindro
-	if(GUI.Button(Rect(110,10,50,50),GUIContent( cilindroIcono,"Creo un Cilindro")))
+	// Boton Extra1 C
+	if(GUI.Button(Rect(-4.15,50.17,35,50),GUIContent( cilindroIcono,"Extra1")))
+	{
+		Construcciones = GameObject.Find("Cilindro");//instanciamos el Nombre del GameObject
+		ConstruccionesCost = costoCilindro;
+	}
+	//boton extra 2 D
+	if(GUI.Button(Rect(30,50.17,35,50),GUIContent( cilindroIcono,"Extra2")))
+	{
+		Construcciones = GameObject.Find("Cilindro");//instanciamos el Nombre del GameObject
+		ConstruccionesCost = costoCilindro;
+	}
+	// Boton E
+	if(GUI.Button(Rect(-4.15,100,35,50),GUIContent( cilindroIcono,"Creo un Cilindro")))
+	{
+		Construcciones = GameObject.Find("Cilindro");//instanciamos el Nombre del GameObject
+		ConstruccionesCost = costoCilindro;
+	}
+		// Boton F
+	if(GUI.Button(Rect(30,100,35,50),GUIContent( cilindroIcono,"Creo un Cilindro")))
 	{
 		Construcciones = GameObject.Find("Cilindro");//instanciamos el Nombre del GameObject
 		ConstruccionesCost = costoCilindro;
@@ -82,7 +104,7 @@ function Update(){
 				break;
 				
 		}
-		Texto.text = "Puntos: "+Puntos;
+		Texto.text = "Bien: "+Puntos;
 	}
 	/* IMPRIMIOS CUANDO NO HAYA DINERO
 	if(Dinero > ConstruccionesCost){
