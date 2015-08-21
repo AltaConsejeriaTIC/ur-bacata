@@ -4,7 +4,7 @@ static var nombres : String;
 var texto : TextMesh;
 
 function Start () {
-	nombres = "Pepito";
+	nombres = "Digite su nombre";
 }
 
 function Update () {

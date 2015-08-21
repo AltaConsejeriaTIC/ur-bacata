@@ -9,7 +9,7 @@ protected var Posicion : Transform;
 static var PuntosMal:int=0;
 
 function Start () {
-	audio.Play();
+//	audio.Play();
 }
 
 function Update () {

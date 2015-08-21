@@ -5,6 +5,7 @@ var Puntos :int = 0; //inicialmente tendremos un dinero de 2000
 var cajaIcono : Texture2D;
 var esferaIcono : Texture2D;
 var cilindroIcono : Texture2D;
+var rio : GameObject;
 // esttos son los costos de cada GameObject
 var costoCubo : int = 1;
 var costoEsfera : int = 1;
@@ -24,7 +25,7 @@ var TxtJugador : TextMesh;
 function Start(){
 	//referencio a mi texto
 	Texto.text = "Bien: "+Puntos;
-	TxtJugador.text = "Jugador: "+nombrecap;
+	
 }
 /* esta funcion OnGUI permite construir los botones en la camara pricipal.
 	permite crear la interfaz.
@@ -70,11 +71,15 @@ function OnGUI(){
 		Construcciones = GameObject.Find("Cilindro");//instanciamos el Nombre del GameObject
 		ConstruccionesCost = costoCilindro;
 	}
- 
+ 	//	CONSTRUIMOS LOS OBJETOS DENTRO DEL MAPA
+ 	//GUI.Button(Rect(100,100,35,50),GUIContent( rio,"Rio"));
+	
 }
 
 //Funcion que se ejecuta frames por segundo
 function Update(){
+	nombrecap = inicial.nombres;
+	TxtJugador.text = "Jugador: "+nombrecap;
 	//Si oprimo el boton izquierdo del mouse
 	if(Input.GetMouseButtonDown(0)){
 		var hit : RaycastHit;// es utilizado para medir distancias
